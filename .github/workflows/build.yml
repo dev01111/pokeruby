@@ -85,7 +85,16 @@ jobs:
           NONMATCHING: 1
           COMPARE: 0
         run: make -j${nproc} $(git grep -wl NONMATCHING src | sed -r 'i-W')
-
+      - name: Upload ROM 1
+        uses: actions/upload-artifact@v3
+        with: 
+          name: "PokeRuby"
+          path: "pokeruby.gba"
+      - name: Upload ROM 2
+        uses: actions/upload-artifact@v3
+        with: 
+          name: "PokeSapphire"
+          path: "pokesapphire.gba"
       - name: Setup German
         run: sh de_before.sh
         working-directory: ./build_de
